@@ -521,11 +521,14 @@ natural boundaries: paragraphs &gt; sentences &gt; newlines &gt; spaces.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> – The text to chunk.</p></li>
-<li><p><strong>max_size</strong> – Maximum characters per chunk.</p></li>
+<li><p><strong>max_size</strong> – Maximum characters per chunk (must be &gt; 0).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>List of text chunks.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If max_size is not positive.</p>
 </dd>
 </dl>
 </dd></dl>
