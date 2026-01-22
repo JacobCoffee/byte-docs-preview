@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>models - Docs</title>
+    <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="lib" href="../../lib/index.html" /><link rel="prev" title="Database" href="index.html" />
+  <script>
+    const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const sessionTheme = sessionStorage['_theme']
+    if (sessionTheme) {
+      document.documentElement.classList.add(sessionTheme)
+    } else if (isDarkTheme) {
+      document.documentElement.classList.add('dark')
+    }
+  </script><link rel="shortcut icon" href="../../../../_static/badge.svg"/><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=aecf457f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=28c32440" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=ee381b95" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=80d31e7b" />
+    <style>
+:root {
+  --sy-f-sys:-apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Droid Sans, Helvetica Neue;--sy-f-cjk:PingFang SC, Hiragino Sans GB, Droid Sans Fallback, Microsoft YaHei;--sy-f-heading:var(--sy-f-sys), var(--sy-f-cjk), sans-serif;--sy-f-text:var(--sy-f-sys), var(--sy-f-cjk), sans-serif;--sy-f-mono:Menlo, Monaco, Consolas, "Courier New", monospace;--sy-c-divider:rgba(var(--sy-rc-text), 0.1);--sy-c-divider-weak:rgba(var(--sy-rc-text), 0.05);--sy-c-border:rgba(var(--sy-rc-text), 0.14);--sy-s-banner-height:0rem;--sy-s-navbar-height:56px;--sy-s-offset-top:calc(var(--sy-s-navbar-height) + var(--sy-s-banner-height));--sy-c-link:rgb(var(--sy-rc-theme));--sy-c-link-weak:rgba(var(--sy-rc-theme), 0.86);
+  --sy-rc-theme:66, 177, 168;--sy-rc-bg:255, 255, 255;--sy-rc-invert:66, 177, 168;--sy-rc-text:66, 177, 168;--sy-c-bg:#fff;--sy-c-bg-weak:12, 12, 12;--sy-c-text:#0C0C0C;--sy-c-text-weak:#42B1A8;--sy-c-heading:#42B1A8;--sy-c-bold:#42B1A8;--sy-c-foot-text:#0C0C0C;--sy-c-foot-bg:#fafafa;--sy-c-foot-divider:#42B1A8;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --sy-rc-theme:66, 177, 168;--sy-rc-bg:255, 255, 255;--sy-rc-invert:66, 177, 168;--sy-rc-text:66, 177, 168;--sy-c-bg:#fff;--sy-c-bg-weak:12, 12, 12;--sy-c-text:#0C0C0C;--sy-c-text-weak:#42B1A8;--sy-c-heading:#42B1A8;--sy-c-bold:#42B1A8;--sy-c-foot-text:#0C0C0C;--sy-c-foot-bg:#fafafa;--sy-c-foot-divider:#42B1A8;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sy-rc-theme:66, 177, 168;--sy-rc-bg:12, 12, 12;--sy-rc-invert:66, 177, 168;--sy-rc-text:66, 177, 168;--sy-c-bg:#42B1A8;--sy-c-bg-weak:#0C0C0C;--sy-c-text:#EBEBE9;--sy-c-text-weak:#42B1A8;--sy-c-heading:#42B1A8;--sy-c-bold:#42B1A8;--sy-c-foot-text:#EBEBE9;--sy-c-foot-bg:#0C0C0C;--sy-c-foot-divider:#42B1A8;
+  }
+}
+html.light {
+  --sy-rc-theme:66, 177, 168;--sy-rc-bg:255, 255, 255;--sy-rc-invert:66, 177, 168;--sy-rc-text:66, 177, 168;--sy-c-bg:#fff;--sy-c-bg-weak:12, 12, 12;--sy-c-text:#0C0C0C;--sy-c-text-weak:#42B1A8;--sy-c-heading:#42B1A8;--sy-c-bold:#42B1A8;--sy-c-foot-text:#0C0C0C;--sy-c-foot-bg:#fafafa;--sy-c-foot-divider:#42B1A8;
+}
+html.dark {
+  --sy-rc-theme:66, 177, 168;--sy-rc-bg:12, 12, 12;--sy-rc-invert:66, 177, 168;--sy-rc-text:66, 177, 168;--sy-c-bg:#42B1A8;--sy-c-bg-weak:#0C0C0C;--sy-c-text:#EBEBE9;--sy-c-text-weak:#42B1A8;--sy-c-heading:#42B1A8;--sy-c-bold:#42B1A8;--sy-c-foot-text:#EBEBE9;--sy-c-foot-bg:#0C0C0C;--sy-c-foot-divider:#42B1A8;
+}
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-heading: Inter, var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="models"/>
+<meta name="twitter:card" content="summary"/></head>
+<body><div class="document"><div class="announcement">
+    <div class="announcement-inner">
+      <p>This documentation is currently under development.</p>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="i-icon close"></i>
+      </button>
+    </div>
+  </div><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand mr-4" href="/">
+      <img class="light-logo" src="../../../../_static/badge.svg" alt="Byte Bot" height="28" />
+      <img class="dark-logo" src="../../../../_static/badge.svg" alt="Byte Bot" height="28" />
+      <strong>Byte Bot</strong>
+    </a>
+    <div class="sy-head-links" id="NavLinks">
+      <nav class="sy-head-nav">
+
+<ul><li class="link">
+          <a href="https://byte-bot.app/"><span>Dashboard</span><i class="i-icon external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/sponsors/JacobCoffee"><span>Sponsor me</span><i class="i-icon external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form>
+        
+        
+        <div class="sy-head-social flex items-center">
+            <a class="flex items-center" href="https://github.com/JacobCoffee/byte-bot" aria-label="GitHub">
+              <i class="i-icon github"></i>
+            </a>
+            <a class="flex items-center" href="https://discord.gg/ZVG8hN6RrJ/" aria-label="Discord">
+              <i class="i-icon discord"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden">
+      <button class="js-theme theme-switch flex items-center" data-aria-light="Switch to dark mode" data-aria-dark="Switch to light mode">
+        <i class="i-icon theme-icon"></i>
+      </button>
+      <button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="NavLinks" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading"><span class="caption-text">Byte Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../byte/usage/index.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/usage/byte.html">About Byte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/usage/starting.html">Starting Byte</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../byte/api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/api/bot.html">bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/api/plugins/index.html">plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/admin.html">admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/astral.html">astral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/events.html">events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/general.html">general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/github.html">github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/testing.html">testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/plugins/python.html">python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/api/views/index.html">views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/views/forums.html">forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/views/astral.html">astral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/views/python.html">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/views/abstract.html">abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../byte/api/lib/index.html">lib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/lib/common.html">common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/lib/logging.html">logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/lib/settings.html">settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../byte/api/lib/utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Web Docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/index.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage/server.html">About the Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage/starting.html">Starting Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../app.html">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metadata.html">metadata</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">domain</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../init.html">Domain Initializer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urls.html">urls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../system/index.html">system</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../system/controllers.html">controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../system/dtos.html">dtos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../system/helpers.html">helpers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../guilds/index.html">guilds</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/controllers.html">controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/dependencies.html">dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/helpers.html">helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/schemas.html">schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/services.html">services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guilds/urls.html">urls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../github/index.html">github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../github/helpers.html">helpers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../web/index.html">web</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../web/controllers.html">controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Database</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/index.html">lib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/constants.html">constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/cors.html">cors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/dependencies.html">dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/dtos.html">dtos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/exceptions.html">exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/openapi.html">openapi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/schema.html">schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/serialization.html">serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/settings.html">settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/static_files.html">static files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/types.html">types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/template.html">template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/log/index.html">logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lib/log/controller.html">controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lib/log/init.html">init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lib/log/utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../lib/db/index.html">Database Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lib/db/base.html">base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lib/db/orm.html">orm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contribution-guide.html">Contribution guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docker-compose.html">Docker Compose Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../database-migrations.html">Database Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../observability.html">Observability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-icon close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4">
+  <div class="localtoc">
+    <h3>On this page</h3>
+    <ul>
+<li><a class="reference internal" href="#module-byte_common.models">API Reference</a><ul>
+<li><a class="reference internal" href="#byte_common.models.AllowedUsersConfig"><code class="docutils literal notranslate"><span class="pre">AllowedUsersConfig</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.AllowedUsersConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AllowedUsersConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.AllowedUsersConfig.created_at"><code class="docutils literal notranslate"><span class="pre">AllowedUsersConfig.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.AllowedUsersConfig.id"><code class="docutils literal notranslate"><span class="pre">AllowedUsersConfig.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.AllowedUsersConfig.updated_at"><code class="docutils literal notranslate"><span class="pre">AllowedUsersConfig.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#byte_common.models.ForumConfig"><code class="docutils literal notranslate"><span class="pre">ForumConfig</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.ForumConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ForumConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.ForumConfig.created_at"><code class="docutils literal notranslate"><span class="pre">ForumConfig.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.ForumConfig.id"><code class="docutils literal notranslate"><span class="pre">ForumConfig.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.ForumConfig.updated_at"><code class="docutils literal notranslate"><span class="pre">ForumConfig.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#byte_common.models.GitHubConfig"><code class="docutils literal notranslate"><span class="pre">GitHubConfig</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.GitHubConfig.__init__"><code class="docutils literal notranslate"><span class="pre">GitHubConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.GitHubConfig.created_at"><code class="docutils literal notranslate"><span class="pre">GitHubConfig.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.GitHubConfig.id"><code class="docutils literal notranslate"><span class="pre">GitHubConfig.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.GitHubConfig.updated_at"><code class="docutils literal notranslate"><span class="pre">GitHubConfig.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#byte_common.models.Guild"><code class="docutils literal notranslate"><span class="pre">Guild</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.Guild.__init__"><code class="docutils literal notranslate"><span class="pre">Guild.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.Guild.created_at"><code class="docutils literal notranslate"><span class="pre">Guild.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.Guild.id"><code class="docutils literal notranslate"><span class="pre">Guild.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.Guild.updated_at"><code class="docutils literal notranslate"><span class="pre">Guild.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#byte_common.models.SOTagsConfig"><code class="docutils literal notranslate"><span class="pre">SOTagsConfig</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.SOTagsConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SOTagsConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.SOTagsConfig.created_at"><code class="docutils literal notranslate"><span class="pre">SOTagsConfig.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.SOTagsConfig.id"><code class="docutils literal notranslate"><span class="pre">SOTagsConfig.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.SOTagsConfig.updated_at"><code class="docutils literal notranslate"><span class="pre">SOTagsConfig.updated_at</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#byte_common.models.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
+<li><a class="reference internal" href="#byte_common.models.User.__init__"><code class="docutils literal notranslate"><span class="pre">User.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.User.created_at"><code class="docutils literal notranslate"><span class="pre">User.created_at</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.User.id"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
+<li><a class="reference internal" href="#byte_common.models.User.updated_at"><code class="docutils literal notranslate"><span class="pre">User.updated_at</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-reference">Model Reference</a></li>
+<li><a class="reference internal" href="#mermaid-diagram">Mermaid Diagram</a></li>
+</ul>
+
+  </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/JacobCoffee/byte"
+  data-type="github" data-user="JacobCoffee" data-repo="byte">
+  <span class="w-8 flex items-center justify-around shrink-0 text-2xl">
+    <i class="i-icon github"></i>
+  </span>
+  <span class="flex-grow px-2">
+    <span>JacobCoffee/byte</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <i class="i-icon star"></i>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <i class="i-icon git-fork"></i>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/JacobCoffee/byte/blob/master/docs/web/api/domain/db/models.rst">Edit this page</a>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div>
+    </div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+    <div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-icon menu"></i>
+      </button>
+    </div>
+    <ul class="flex-1">
+      
+      
+      <li><a href="../../../../index.html">Byte Bot</a><span>/</span></li>
+      
+      <li><a href="../../index.html">API Reference</a><span>/</span></li>
+      
+      <li><a href="../index.html">domain</a><span>/</span></li>
+      
+      <li><a href="index.html">Database</a><span>/</span></li>
+      
+      <li><strong>models</strong></li>
+      
+      
+    </ul>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-icon outdent"></i>
+      </button>
+    </div>
+  </div>
+</div>
+    <div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="models">
+<h1>models<a class="headerlink" href="#models" title="Link to this heading">¶</a></h1>
+<p>Model definition for the domain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Models have been moved to the byte-common shared package in the microservices architecture.</p>
+</div>
+<section id="module-byte_common.models">
+<span id="api-reference"></span><h2>API Reference<a class="headerlink" href="#module-byte_common.models" title="Link to this heading">¶</a></h2>
+<p>Shared database models.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.AllowedUsersConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">AllowedUsersConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/allowed_users_config.html#AllowedUsersConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.AllowedUsersConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>SQLAlchemy association model for a guild’s allowed users’ config.</p>
+<p>A guild normally has a set of users to perform administrative actions, but sometimes
+we don’t want to give full administrative access to a user.</p>
+<p>This model allows us to configure which users are allowed to perform administrative
+actions on Byte specifically without giving them full administrative access to the Discord guild.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>More preferably, this should be more generalized to a user OR role ID.</p>
+</div>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.AllowedUsersConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.AllowedUsersConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.AllowedUsersConfig.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.AllowedUsersConfig.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.AllowedUsersConfig.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.AllowedUsersConfig.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.AllowedUsersConfig.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.AllowedUsersConfig.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.ForumConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">ForumConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/forum_config.html#ForumConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.ForumConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>Forum configuration.</p>
+<dl class="simple">
+<dt>A guild will be able to set whether they want help and/or showcase forums.</dt><dd><ul class="simple">
+<li><p>If they already have them set up, they can configure the channel IDs for them.</p></li>
+<li><p>If they don’t have them set up, they can configure the category and channel names for them
+Byte will then create the channels for them.</p></li>
+<li><p>If they don’t want them, they can disable them.</p></li>
+</ul>
+</dd>
+<dt>Help forum settings include:</dt><dd><ul class="simple">
+<li><p>Respond with help embed, including a link to ‘Open a GitHub Issue’
+if the <cite>GitHubConfig:github_organization</cite> and <cite>GitHubConfig:github_repository</cite> are set.
+Also includes <cite>Solve</cite> button to mark as solved and close the thread.</p></li>
+<li><p>Automatic thread closing after a certain period of inactivity.</p></li>
+<li><p>Uploading of threads into GitHub discussions.</p></li>
+<li><p>Pinging of defined roles when a thread has not received a response from someone with those roles
+after a certain period of time.</p></li>
+</ul>
+</dd>
+<dt>Showcase forum settings include:</dt><dd><ul class="simple">
+<li><p>Respond with showcase embed, including a link to ‘Add to awesome-$repo’
+if the <cite>GitHubConfig:github_organization</cite> and <cite>GitHubConfig:github_awesome</cite> are set.</p></li>
+<li><p>Automatic thread closing after a certain period of inactivity.</p></li>
+<li><p>Uploading of threads into GitHub discussions.</p></li>
+</ul>
+</dd>
+</dl>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.ForumConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.ForumConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.ForumConfig.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.ForumConfig.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.ForumConfig.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.ForumConfig.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.ForumConfig.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.ForumConfig.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.GitHubConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">GitHubConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/github_config.html#GitHubConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.GitHubConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>GitHub configuration.</p>
+<p>A guild will be able to configure which organization or user they want as a default
+base, which repository they want as a default, and whether they would like to sync
+discussions with forum posts.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.GitHubConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.GitHubConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.GitHubConfig.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.GitHubConfig.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.GitHubConfig.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.GitHubConfig.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.GitHubConfig.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.GitHubConfig.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.Guild">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">Guild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/guild.html#Guild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.Guild" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>Guild configuration.</p>
+<p>A single guild will contain base defaults (e.g., <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, boolean flags for linking, etc.)
+with configurable options that can be set by the guild owner or <code class="docutils literal notranslate"><span class="pre">allowed_users</span></code>.</p>
+<p>Part of the feature set of Byte is that you have interactivity with your git repositories,
+StackOverflow, Discord forums, and other external services.</p>
+<p>Here, a guild should be able to configure their own GitHub organization, StackOverflow tags, etc.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.Guild.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.Guild.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.Guild.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.Guild.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.Guild.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.Guild.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.Guild.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.Guild.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.SOTagsConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">SOTagsConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/sotags_config.html#SOTagsConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.SOTagsConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>SQLAlchemy association model for a guild’s Stack Overflow tags config.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.SOTagsConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.SOTagsConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.SOTagsConfig.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.SOTagsConfig.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.SOTagsConfig.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.SOTagsConfig.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.SOTagsConfig.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.SOTagsConfig.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="byte_common.models.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">byte_common.models.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/byte_common/models/user.html#User"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byte_common.models.User" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDAuditBase</span></code></p>
+<p>SQLAlchemy model representing a user.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>This may not really be needed?</p>
+</div>
+<p>Currently, a user in the Byte context is an individual user assigned to the
+guild’s allowed users config.</p>
+<p>In the future we may want to expand this to allow for more granular permissions.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="byte_common.models.User.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#byte_common.models.User.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.User.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.User.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance creation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.User.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">UUID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.User.id" title="Link to this definition">¶</a></dt>
+<dd><p>UUID Primary key column.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="byte_common.models.User.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime.datetime</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#byte_common.models.User.updated_at" title="Link to this definition">¶</a></dt>
+<dd><p>Date/time of instance last update.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="model-reference">
+<h2>Model Reference<a class="headerlink" href="#model-reference" title="Link to this heading">¶</a></h2>
+<dl class="simple sqla">
+<dt>byte_common.models.Guild (<em>guild</em>)</dt><dd><p>Guild configuration.</p>
+<p>A single guild will contain base defaults (e.g., <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, boolean flags for linking, etc.)
+with configurable options that can be set by the guild owner or <code class="docutils literal notranslate"><span class="pre">allowed_users</span></code>.</p>
+<p>Part of the feature set of Byte is that you have interactivity with your git repositories,
+StackOverflow, Discord forums, and other external services.</p>
+<p>Here, a guild should be able to configure their own GitHub organization, StackOverflow tags, etc.</p>
+<p class="rubric">Columns:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>guild_id*</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-even"><td><p>guild_name</p></td>
+<td><p>VARCHAR(100)</p></td>
+</tr>
+<tr class="row-odd"><td><p>prefix</p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p>help_channel_id</p></td>
+<td><p>BIGINT?</p></td>
+</tr>
+<tr class="row-odd"><td><p>showcase_channel_id</p></td>
+<td><p>BIGINT?</p></td>
+</tr>
+<tr class="row-even"><td><p>sync_label</p></td>
+<td><p>VARCHAR?</p></td>
+</tr>
+<tr class="row-odd"><td><p>issue_linking</p></td>
+<td><p>BOOLEAN</p></td>
+</tr>
+<tr class="row-even"><td><p>comment_linking</p></td>
+<td><p>BOOLEAN</p></td>
+</tr>
+<tr class="row-odd"><td><p>pep_linking</p></td>
+<td><p>BOOLEAN</p></td>
+</tr>
+<tr class="row-even"><td><p><em>id*</em></p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-odd"><td><p>sa_orm_sentinel</p></td>
+<td><p>INTEGER?</p></td>
+</tr>
+<tr class="row-even"><td><p>created_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+<tr class="row-odd"><td><p>updated_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Constraints:</p>
+<ul class="simple">
+<li><p>PRIMARY KEY (id)</p></li>
+</ul>
+<p class="rubric">Indexes:</p>
+<ul class="simple">
+<li><p>ix_guild_guild_id (guild_id)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple sqla">
+<dt>byte_common.models.GitHubConfig (<em>github_config</em>)</dt><dd><p>GitHub configuration.</p>
+<p>A guild will be able to configure which organization or user they want as a default
+base, which repository they want as a default, and whether they would like to sync
+discussions with forum posts.</p>
+<p class="rubric">Columns:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>→ guild_id</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-even"><td><p>discussion_sync</p></td>
+<td><p>BOOLEAN</p></td>
+</tr>
+<tr class="row-odd"><td><p>github_organization</p></td>
+<td><p>VARCHAR?</p></td>
+</tr>
+<tr class="row-even"><td><p>github_repository</p></td>
+<td><p>VARCHAR?</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>id*</em></p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-even"><td><p>sa_orm_sentinel</p></td>
+<td><p>INTEGER?</p></td>
+</tr>
+<tr class="row-odd"><td><p>created_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+<tr class="row-even"><td><p>updated_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Constraints:</p>
+<ul class="simple">
+<li><p>FOREIGN KEY (guild.guild_id → guild_id)</p></li>
+<li><p>PRIMARY KEY (id)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple sqla">
+<dt>byte_common.models.SOTagsConfig (<em>so_tags_config</em>)</dt><dd><p>SQLAlchemy association model for a guild’s Stack Overflow tags config.</p>
+<p class="rubric">Columns:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>→ guild_id</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-even"><td><p>tag_name</p></td>
+<td><p>VARCHAR(50)</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>id*</em></p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-even"><td><p>sa_orm_sentinel</p></td>
+<td><p>INTEGER?</p></td>
+</tr>
+<tr class="row-odd"><td><p>created_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+<tr class="row-even"><td><p>updated_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Constraints:</p>
+<ul class="simple">
+<li><p>FOREIGN KEY (guild.guild_id → guild_id)</p></li>
+<li><p>PRIMARY KEY (id)</p></li>
+<li><p>UNIQUE (guild_id, tag_name)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple sqla">
+<dt>byte_common.models.AllowedUsersConfig (<em>allowed_users</em>)</dt><dd><p>SQLAlchemy association model for a guild’s allowed users’ config.</p>
+<p>A guild normally has a set of users to perform administrative actions, but sometimes
+we don’t want to give full administrative access to a user.</p>
+<p>This model allows us to configure which users are allowed to perform administrative
+actions on Byte specifically without giving them full administrative access to the Discord guild.</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>More preferably, this should be more generalized to a user OR role ID.</p>
+</div>
+<p class="rubric">Columns:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>→ guild_id</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-even"><td><p>→ user_id</p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>id*</em></p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-even"><td><p>sa_orm_sentinel</p></td>
+<td><p>INTEGER?</p></td>
+</tr>
+<tr class="row-odd"><td><p>created_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+<tr class="row-even"><td><p>updated_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Constraints:</p>
+<ul class="simple">
+<li><p>FOREIGN KEY (guild.guild_id → guild_id)</p></li>
+<li><p>FOREIGN KEY (user.id → user_id)</p></li>
+<li><p>PRIMARY KEY (id)</p></li>
+<li><p>UNIQUE (guild_id, user_id)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple sqla">
+<dt>byte_common.models.User (<em>user</em>)</dt><dd><p>SQLAlchemy model representing a user.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>This may not really be needed?</p>
+</div>
+<p>Currently, a user in the Byte context is an individual user assigned to the
+guild’s allowed users config.</p>
+<p>In the future we may want to expand this to allow for more granular permissions.</p>
+<p class="rubric">Columns:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>VARCHAR(100)</p></td>
+</tr>
+<tr class="row-even"><td><p>avatar_url</p></td>
+<td><p>VARCHAR?</p></td>
+</tr>
+<tr class="row-odd"><td><p>discriminator</p></td>
+<td><p>VARCHAR(4)</p></td>
+</tr>
+<tr class="row-even"><td><p><em>id*</em></p></td>
+<td><p>BINARY(16)</p></td>
+</tr>
+<tr class="row-odd"><td><p>sa_orm_sentinel</p></td>
+<td><p>INTEGER?</p></td>
+</tr>
+<tr class="row-even"><td><p>created_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+<tr class="row-odd"><td><p>updated_at</p></td>
+<td><p>DATETIME</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Constraints:</p>
+<ul class="simple">
+<li><p>PRIMARY KEY (id)</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="mermaid-diagram">
+<h2>Mermaid Diagram<a class="headerlink" href="#mermaid-diagram" title="Link to this heading">¶</a></h2>
+<pre  class="mermaid">
+        classDiagram
+  UUIDAuditBase &lt;|-- AllowedUsersConfig
+  UUIDAuditBase &lt;|-- ForumConfig
+  UUIDAuditBase &lt;|-- GitHubConfig
+  UUIDAuditBase &lt;|-- Guild
+  UUIDAuditBase &lt;|-- SOTagsConfig
+  UUIDAuditBase &lt;|-- User
+    </pre></section>
+</section>
+
+        </article>
+        
+        <div class="navigation flex print:hidden">
+  <div class="navigation-prev">
+    <a href="index.html">
+      <i class="i-icon chevron"></i>
+      <div class="page-info">
+        <span>Previous</span>
+        
+        <div class="title">Database</div>
+        
+      </div>
+    </a>
+  </div>
+  <div class="navigation-next">
+    <a href="../../lib/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">lib</div>
+      </div>
+      <i class="i-icon chevron"></i>
+    </a>
+  </div>
+</div>
+        
+      </div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2023, Jacob Coffee</p>
+        
+        <p>
+          Made with
+          
+          <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+          
+          <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+        </p>
+      </div>
+      <div class="sy-foot-socials">
+          <a href="https://github.com/JacobCoffee/byte-bot" aria-label="GitHub"><i class="i-icon github"></i></a>
+          <a href="https://twitter.com/_scriptr" aria-label="X (Twitter)"><i class="i-icon x-twitter"></i></a>
+          <a href="https://discord.gg/ZVG8hN6RrJ/" aria-label="Discord"><i class="i-icon discord"></i></a>
+          <a href="https://youtube.com/@monorepo" aria-label="YouTube"><i class="i-icon youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer></div>
+      <script src="../../../../_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=3e5c8598"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    
+</body>
+</html>
